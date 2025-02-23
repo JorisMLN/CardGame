@@ -1,5 +1,6 @@
 export interface Card {
-    id: number;
+    id: string;
+    type: string;
     name: string;
     attack: number;
     defense: number;
@@ -9,6 +10,7 @@ export interface Card {
   
   export interface Player {
     id: number;
+    status: PlayerStatus;
     deckDrafted: Card[];
     hand: Card[];
     board: Card[];
@@ -21,6 +23,7 @@ export interface Card {
       player2?: Player;
     };
     currentPlayer: CurrentPlayer;
+    notPickedAndBannedCards: Card[];
     turn: number;
     status: GameStatus;
   }
@@ -28,6 +31,12 @@ export interface Card {
   enum CurrentPlayer {
     Player1,
     Player2
+  }
+
+  enum PlayerStatus {
+    Inactif,
+    OnQueue,
+    InGame
   }
 
   enum GameStatus {
