@@ -1,10 +1,7 @@
-import dotenv from 'dotenv';
-import { AppConfig } from './types/gameType';
+import 'dotenv/config';
 
-dotenv.config();
-
-const config: AppConfig = {
-  port: parseInt(process.env.PORT || '3000', 10),
+export const config = {
+  port: process.env.PORT || 3000,
   env: process.env.NODE_ENV || 'development',
   jwt: {
     secret: process.env.JWT_SECRET || 'fallback_secret_for_dev_only',
@@ -12,5 +9,3 @@ const config: AppConfig = {
   },
   publicRoutes: ['/', '/login']
 };
-
-export default config;
